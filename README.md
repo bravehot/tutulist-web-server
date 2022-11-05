@@ -1,6 +1,6 @@
 # tutulist web server
 ### 视频介绍
-![大纲](https://public-photo-bed.oss-cn-hangzhou.aliyuncs.com/github/tutulist%20%E4%BB%8B%E7%BB%8D.gif)
+https://public-photo-bed.oss-cn-hangzhou.aliyuncs.com/github/%20tutulist%20%E4%BB%8B%E7%BB%8D.mov
 
 ### 体验地址
 测试环境：http://dev.tutulist.cn <br/>
