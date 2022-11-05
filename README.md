@@ -1,13 +1,13 @@
 # tutulist web server
+### 视频介绍
+<video id="video" src="
+https://public-photo-bed.oss-cn-hangzhou.aliyuncs.com/github/%20tutulist%20%E4%BB%8B%E7%BB%8D.mov" controls="" preload="none" poster="封面" width="600">
+    <source id="mp4" src="mp4格式视频" type="video/mp4">
+</videos>
+
 ### 体验地址
 测试环境：http://dev.tutulist.cn <br/>
 生产环境：https://tutulist.cn
-
-### 视频介绍
-<video id="video" src="
-https://public-photo-bed.oss-cn-hangzhou.aliyuncs.com/github/%20tutulist%20%E4%BB%8B%E7%BB%8D.mov" controls="" preload="none" poster="封面">
-    <source id="mp4" src="mp4格式视频" type="video/mp4">
-</videos>
 
 ### 技术选型
 1. midway 框架的使用
