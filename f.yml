@@ -1,0 +1,18 @@
+service:
+  name: tutu-list-web-server
+
+provider:
+  name: aliyun
+  runtime: nodejs14
+
+package:
+  exclude:
+    - package-lock.json
+    - bootstrap.js
+
+deployType:
+  type: koa ## 部署的应用类型
+  version: 3.0.0
+
+custom:
+  customDomain: false

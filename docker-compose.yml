@@ -1,0 +1,48 @@
+version: '3'
+services:
+  redis:
+    image: redis:7-alpine
+    restart: always
+    volumes:
+      - $HOME/home/redis/data:/data
+    environment:
+      TZ: Asia/Shanghai
+    expose:
+      - 6379
+    ports:
+      - '6379:6379'
+
+  mysql:
+    image: mysql:8
+    restart: always
+    volumes:
+      - $HOME/home/mysql/data:/var/lib/mysql
+    expose:
+      - 3306
+    ports:
+      - '3306:3306'
+    command: --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+    env_file:
+      - ./.env
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_DATABASE=tutulist_admin
+      - MYSQL_ROOT_USER=root
+      - MYSQL_ROOT_PASSWORD=tutulist
+
+  app:
+    image: registry.cn-hangzhou.aliyuncs.com/tutulist/tutulist-web-server:latest
+    container_name: app_server
+    ports:
+      - '7001:7001'
+    env_file:
+      - ./.env
+    restart: always
+    depends_on:
+      - mysql
+      - redis
+    links:
+      - redis
+      - mysql

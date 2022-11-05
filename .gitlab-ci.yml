@@ -1,0 +1,15 @@
+stages:
+  - build
+
+build-job:
+  image: docker
+  stage: build
+  services:
+    - docker:dind
+  script:
+    - docker login --username=${USER_NAME} registry.cn-hangzhou.aliyuncs.com --password ${PASS_WORD}
+    - echo "登录镜像仓库成功"
+    - docker build -t tutulist-web-server .
+    - docker tag tutulist-web-server:latest registry.cn-hangzhou.aliyuncs.com/tutulist/tutulist-web-server:latest
+    - docker push registry.cn-hangzhou.aliyuncs.com/tutulist/tutulist-web-server:latest
+    - echo "镜像推送成功"
