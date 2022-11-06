@@ -1,7 +1,4 @@
 # tutulist web server
-### 视频介绍
-https://public-photo-bed.oss-cn-hangzhou.aliyuncs.com/github/%20tutulist%20%E4%BB%8B%E7%BB%8D.mov
-
 ### 体验地址
 测试环境：http://dev.tutulist.cn <br/>
 生产环境：https://tutulist.cn
@@ -27,7 +24,7 @@ https://public-photo-bed.oss-cn-hangzhou.aliyuncs.com/github/%20tutulist%20%E4%B
 
 ### 关于
 此项目为前后端分离项目，且前后端的代码已全部开源。<br/>
-关于该项目的全部信息，都已全部记录在了 [语雀知识库](https://www.yuque.com/aiyouwai/tutulist)，涵盖了前后端的代码到部署的全部知识，欢迎大家查阅。
+关于该项目的全部信息，都已全部记录在了 [语雀知识库](https://www.yuque.com/aiyouwai/tutulist/gam1z6)，涵盖了前后端的代码到部署的全部知识，欢迎大家查阅。
 
 ![大纲](https://public-photo-bed.oss-cn-hangzhou.aliyuncs.com/github/iShot_2022-11-05_23.12.09.png)
 
