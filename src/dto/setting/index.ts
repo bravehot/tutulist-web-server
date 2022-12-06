@@ -1,4 +1,4 @@
-import { StartWeekEnum, WeekNameEnum } from '@/types/setting/enum';
+import { StartWeekEnum, ThemeEnum, WeekNameEnum } from '@/types/setting/enum';
 import { Rule, RuleType } from '@midwayjs/validate';
 
 export class SaveSettingDTO {
@@ -15,4 +15,11 @@ export class SaveSettingDTO {
       .required()
   )
   weekName: WeekNameEnum;
+
+  @Rule(
+    RuleType.string()
+      .valid(ThemeEnum.DARK, ThemeEnum.LIGHT, ThemeEnum.SYSTEM)
+      .required()
+  )
+  theme: ThemeEnum;
 }

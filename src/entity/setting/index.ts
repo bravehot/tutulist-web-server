@@ -8,7 +8,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { StartWeekEnum, WeekNameEnum } from '@/types/setting/enum';
+import { StartWeekEnum, WeekNameEnum, ThemeEnum } from '@/types/setting/enum';
 @Entity()
 export class SettingInfo {
   @PrimaryColumn()
@@ -34,6 +34,14 @@ export class SettingInfo {
     comment: '周命名为星期还是周',
   })
   weekName: WeekNameEnum;
+
+  @Column({
+    type: 'enum',
+    enum: ThemeEnum,
+    default: ThemeEnum.SYSTEM,
+    comment: '设置系统主题，默认是跟随系统',
+  })
+  theme: ThemeEnum;
 
   @CreateDateColumn({
     type: 'timestamp',

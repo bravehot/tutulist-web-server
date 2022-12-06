@@ -33,11 +33,12 @@ export class SettingService {
       await this.settingModel.update(userId, settingInfo);
       return 'ok';
     } else {
-      const { startWeek, weekName } = settingInfo;
+      const { startWeek, weekName, theme } = settingInfo;
       const setting = await this.settingModel.create({
         userId,
         startWeek,
         weekName,
+        theme,
       });
       await this.settingModel.save(setting);
       return 'ok';
@@ -53,10 +54,11 @@ export class SettingService {
       where: [{ userId }],
     });
     if (settingInfo) {
-      const { startWeek, weekName } = settingInfo;
+      const { startWeek, weekName, theme } = settingInfo;
       return {
         startWeek,
         weekName,
+        theme,
       };
     }
     return [];

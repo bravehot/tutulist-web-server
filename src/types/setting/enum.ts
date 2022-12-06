@@ -7,3 +7,9 @@ export enum WeekNameEnum {
   STAR_WEEK = 'starWeek',
   WEEK = 'week',
 }
+
+export enum ThemeEnum {
+  LIGHT = 'light',
+  DARK = 'dark',
+  SYSTEM = 'system',
+}
