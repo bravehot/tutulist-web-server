@@ -27,7 +27,14 @@ export default (appInfo: MidwayAppInfo): MidwayConfig => {
           password: '',
         },
       },
-    };
+      cos: {
+        client: {
+          SecretId: 'SecretId',
+          SecretKey: 'SecretKey',
+          Bucket: 'cos bucket 名称',
+        },
+      },
+    } as MidwayConfig;
   } else {
     // 测试环境开发配置
     return {
