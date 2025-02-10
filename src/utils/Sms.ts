@@ -1,18 +1,20 @@
 import { Context } from '@midwayjs/koa';
-import { Inject } from '@midwayjs/decorator';
+import { Inject, Provide, Scope } from '@midwayjs/decorator';
+import { ScopeEnum } from '@midwayjs/core';
 import * as tencentcloud from 'tencentcloud-sdk-nodejs';
 import { DefaultError } from '@/error/default.error';
 
 import SMSKEY from './key';
+
+@Provide()
+@Scope(ScopeEnum.Singleton)
 export class Sms {
   @Inject()
   ctx: Context;
 
-  private static instance: Sms;
-
   private smsClient: any;
 
-  private constructor() {
+  constructor() {
     const SmsClient = tencentcloud.sms.v20210111.Client;
     this.smsClient = new SmsClient({
       credential: {
@@ -28,12 +30,6 @@ export class Sms {
     });
   }
 
-  public static getInstance() {
-    if (!Sms.instance) {
-      Sms.instance = new Sms();
-    }
-    return Sms.instance;
-  }
   /**
    * @param mobile 手机号
    * @param code 验证码
@@ -52,8 +48,7 @@ export class Sms {
      * 需要登录的时候直接去 Redis 取
      */
     try {
-      const smsClient = Sms.getInstance().smsClient;
-      const { SendStatusSet } = await smsClient.SendSms(params);
+      const { SendStatusSet } = await this.smsClient.SendSms(params);
       const smsResult = SendStatusSet && SendStatusSet[0];
       if (smsResult.Code === 'Ok') {
         return true;

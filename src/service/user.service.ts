@@ -72,6 +72,9 @@ export class UserService {
   @Inject()
   ctx: Context;
 
+  @Inject()
+  sms: Sms;
+
   async register(user: UserDTO) {
     const { mobile, code, password } = user;
 
@@ -126,6 +129,7 @@ export class UserService {
       const tokenInfo = await getAccessRefreshToken(
         this.jwtService,
         signPayload,
+        this.jwtConfig.secret,
         this.jwtConfig.expiresIn,
         this.jwtConfig.refreshExpiresIn
       );
@@ -157,6 +161,7 @@ export class UserService {
           const tokenInfo = await getAccessRefreshToken(
             this.jwtService,
             signPayload,
+            this.jwtConfig.secret,
             this.jwtConfig.expiresIn,
             this.jwtConfig.refreshExpiresIn
           );
@@ -175,8 +180,7 @@ export class UserService {
   async sendCode(mobile: string, type: keyof typeof SmsTemplateIdEnum) {
     const code = getRandomCode();
     try {
-      const client = Sms.getInstance();
-      await client.sendSms(mobile, code, SmsTemplateIdEnum[type]);
+      await this.sms.sendSms(mobile, code, SmsTemplateIdEnum[type]);
 
       const redisKey = `${UserKeyEnum.SMS_REDIS_KEY}${mobile}`;
       // 设置60秒有效期
@@ -297,6 +301,7 @@ export class UserService {
       return await getAccessRefreshToken(
         this.jwtService,
         { mobile, userId },
+        this.jwtConfig.secret,
         this.jwtConfig.expiresIn,
         this.jwtConfig.refreshExpiresIn
       );

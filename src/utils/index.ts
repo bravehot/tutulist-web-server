@@ -39,19 +39,19 @@ const getHeaderAuthInfo = async <T>(
 const getAccessRefreshToken = async (
   service: JwtService,
   payload: any,
+  secretOrPrivateKey: string,
   assetExpiresIn: string,
   refreshExpiresIn: string
 ): Promise<{
   accessToken: string;
   refreshToken: string;
 }> => {
-  const accessToken = await service.sign(payload, {
-    expiresIn: assetExpiresIn,
+  const accessToken = await service.sign(payload, secretOrPrivateKey, {
+    expiresIn: assetExpiresIn as any,
   });
-  const refreshToken = await service.sign(payload, {
-    expiresIn: refreshExpiresIn,
+  const refreshToken = await service.sign(payload, secretOrPrivateKey, {
+    expiresIn: (refreshExpiresIn as any) || '4d',
   });
-
   return {
     accessToken,
     refreshToken,

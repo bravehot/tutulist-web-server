@@ -11,7 +11,7 @@ export default {
   jwt: {
     secret: 'your secret', // fs.readFileSync('xxxxx.key')
     expiresIn: '2d', // https://github.com/vercel/ms
-    refreshExpiresIn: '4d',
+    // refreshExpiresIn: '4d',
   },
   typeorm: {
     dataSource: {
@@ -24,7 +24,7 @@ export default {
         password: process.env.DATABASE_PASSWORD,
         synchronize: true,
         // 根据路径，装配实体类，注意，这里和常见的 typeorm 等扫描路径不同，entities 的路径不需要写 .ts 后缀
-        entities: ['/entity'],
+        entities: ['**/entity/**/*.{j,t}s'],
       },
     },
   },
