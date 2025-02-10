@@ -1,7 +1,6 @@
 # tutulist web server
 ### 体验地址
 测试环境：http://dev.tutulist.cn <br/>
-生产环境：https://tutulist.cn
 
 ### 技术选型
 1. midway 框架的使用
